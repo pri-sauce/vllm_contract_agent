@@ -1,0 +1,38 @@
+# ============================================================
+#  Contract Agent — Configuration
+# ============================================================
+
+# --- vLLM (primary inference) ---
+VLLM_BASE_URL=http://localhost:8000/v1
+
+# --- Ollama (embeddings only) ---
+OLLAMA_BASE_URL=http://localhost:11434
+
+# --- Models ---
+# Must match EXACTLY what vLLM is serving
+# Check with: curl http://localhost:8000/v1/models
+PRIMARY_MODEL=Qwen/Qwen2.5-7B-Instruct
+FAST_MODEL=Qwen/Qwen2.5-7B-Instruct
+EMBEDDING_MODEL=nomic-embed-text
+
+# --- Parallelism ---
+# vLLM batches these internally — 20 is safe on 95GB card
+PARALLEL_WORKERS=20
+
+# --- Paths ---
+DATA_DIR=data
+UPLOADS_DIR=data/uploads
+PROCESSED_DIR=data/processed
+KNOWLEDGE_BASE_DIR=data/knowledge_base
+PLAYBOOK_PATH=data/knowledge_base/playbook.yaml
+
+# --- Chunking ---
+MAX_CHUNK_TOKENS=512
+CHUNK_OVERLAP_TOKENS=50
+
+# --- Agent ---
+RISK_THRESHOLD=MEDIUM
+
+# --- Logging ---
+LOG_LEVEL=INFO
+LOG_FILE=data/agent.log
